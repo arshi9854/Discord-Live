@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101412" />
+  <title>Pocket Post / Live channel monitor</title>
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#guestbook">Skip to messages</a>
+  <div class="page">
+    <header class="topbar">
+      <a href="/" class="brand"><span class="brand-icon" aria-hidden="true">↳</span> POCKET_POST <span class="brand-dot">/ LIVE</span></a>
+      <div class="header-actions">
+        <button id="theme-toggle" class="soft-button" type="button" aria-label="Switch to light theme">☀ Light</button>
+        <span class="connection" id="connection"><span class="dot"></span><span id="connection-text">Connecting</span></span>
+        <button class="text-button" id="help-button" type="button">How it works <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <span class="eyebrow">DISCORD → SERVER → YOUR BROWSER</span>
+          <h1 id="page-title">A channel.<br /><em>A live connection.</em></h1>
+          <p>Messages, edits, and deletions. Delivered as they happen.</p>
+        </div>
+      </section>
+      <div class="source-strip">
+        <span><span class="tiny-flower" aria-hidden="true">SOURCE /</span> <strong id="channel-title">your channel</strong> <span id="guild-name"></span></span>
+        <div class="source-actions"><span class="demo-badge" id="mode-badge" hidden>DEMO DATA</span><a id="write-note" class="source-cta" href="#how-it-works">Open Discord ↗</a></div>
+      </div>
+      <div class="delivery-status" aria-label="Delivery status"><span id="browser-state">Browser stream: connecting</span><span id="discord-state">Discord: connecting</span><span id="last-update" title="When this page received its latest snapshot, new message, edit, or deletion. This is not a latency measurement.">Waiting for a message update</span></div>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div class="feed-layout">
+      <section id="guestbook" aria-labelledby="wall-title">
+        <div class="wall-heading">
+          <div><span class="eyebrow">MESSAGE STREAM</span><h2 id="wall-title">Incoming messages</h2></div>
+          <button class="soft-button" id="pause-button" type="button" aria-pressed="false"><span id="pause-label">Pause</span></button>
+        </div>
+        <div class="toolbar">
+          <div class="tabs" role="group" aria-label="Choose messages">
+            <button type="button" id="all-tab" aria-pressed="true">All messages <span id="all-count">0</span></button>
+            <button type="button" id="saved-tab" aria-pressed="false">Bookmarks <span id="saved-count">0</span></button>
+          </div>
+          <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search message or author" aria-label="Search messages or authors" /></label>
+        </div>
+        <div class="keepsake-tools" id="keepsake-tools" hidden><p>Bookmark IDs stay in this browser. Export messages before they leave the retained window.</p><button id="download-button" class="soft-button" type="button">Export bookmarks ↓</button></div>
+        <p class="list-caption"><span id="message-count">Opening stream…</span><span>Newest messages first</span></p>
+        <div id="messages" class="postcard-grid"></div>
+        <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">✉</span><h3>Waiting for messages.</h3><p>Post in the connected Discord channel to see your message here.</p></div>
+        <div class="wall-footer"><span id="footer-status">Connecting…</span><span>READ ONLY / UP TO 200 MESSAGES</span></div>
+      </section>
+      <aside class="insights" aria-labelledby="insights-title">
+        <div class="insights-heading"><span class="eyebrow">THE SHORT VERSION</span><h2 id="insights-title">Channel pulse</h2></div>
+        <form id="sidebar-recap" class="recap-entry"><label for="insight-request">Catch me up.</label><p>Less scrolling. More context.</p><textarea id="insight-request" rows="2" maxlength="300" placeholder="Summarize last 2 weeks…"></textarea><button type="submit" id="recap-open">Open recap chat ↗</button><small>Choose a member, time range, and optional AI.</small></form>
+        <p class="insights-scope" id="insights-scope">Current retained window only · not weekly totals</p>
+        <div class="pulse-stats"><div><strong id="pulse-count">0</strong><span>messages</span></div><div><strong id="pulse-members">0</strong><span>members</span></div><div><strong id="pulse-questions">0</strong><span>with a ?</span></div></div>
+        <section class="insight-card"><h3>What they're talking about</h3><p class="insights-scope">Estimated keyword clusters · tap to see examples</p><div id="pulse-topics"></div><small>Current window only. Topics can overlap and miss context; no automatic AI calls.</small></section>
+        <section class="insight-card"><h3>Who's in the conversation</h3><div id="pulse-people"></div><small>Message counts, not contribution scores.</small></section>
+        <section class="insight-card"><span class="eyebrow" id="insight-provider">LOCAL RECAP</span><h3>Your catch-up brief</h3><p id="insight-intro">Turn selected messages into a quick, source-linked recap.</p><p class="insights-scope">Use the Catch me up box above. No automatic AI calls.</p><div id="insight-brief"><p class="insights-scope">Your next recap will appear here.</p></div></section>
+      </aside>
+      </div>
+      <details class="how-card" id="how-it-works"><summary>How this stream works</summary><div class="how-content">
+        <div class="how-intro"><h2 id="how-title">One source.<br />A shared view.</h2><p>A read-only window into a Discord channel. The backend handles the bot connection; your browser receives live updates.</p></div>
+        <ol><li><span>01</span><div><strong>Post in Discord.</strong><p>Post in the connected Discord channel.</p></div></li><li><span>02</span><div><strong>Follow the stream.</strong><p>Everyone’s notes arrive here automatically.</p></div></li><li><span>03</span><div><strong>Bookmark what matters.</strong><p>Bookmark messages in this browser, or export them as text.</p></div></li></ol>
+      </div></details>
+    </main>
+    <footer class="page-footer"><span class="footer-brand">POCKET_POST</span><span>ONE CHANNEL / REAL-TIME DELIVERY</span><small>Public feed · bounded history</small></footer>
+  </div>
+  <div id="announcement" class="visually-hidden" role="status" aria-live="polite"></div>
+  <dialog id="recap-dialog" aria-labelledby="recap-title">
+    <header class="recap-header"><div><span class="eyebrow">LESS SCROLLING / MORE CONTEXT</span><h2 id="recap-title">Catch me up.</h2></div><button id="recap-close" class="soft-button" type="button" aria-label="Close recap">Close ×</button></header>
+    <p class="recap-disclosure" id="recap-provider">Local extractive summaries · no external AI · only this channel</p>
+    <label class="ai-consent" id="ai-consent" hidden><input id="allow-external" type="checkbox" /> Use AI: send up to six selected excerpts and author names to OpenRouter and its model provider.</label>
+    <div class="recap-filters">
+      <label>Past days <input id="recap-days" type="number" min="1" max="30" value="7" required /></label>
+      <label>Member <input id="recap-member" list="recap-members" maxlength="100" placeholder="Everyone, or exact name / ID" /><datalist id="recap-members"></datalist></label>
+    </div>
+    <div class="recap-presets" role="group" aria-label="Recap range"><button type="button" data-days="7">1 week</button><button type="button" data-days="14">2 weeks</button><button type="button" data-days="30">30 days</button><button type="button" id="recap-clear">Clear chat</button></div>
+    <div id="recap-log" role="log" aria-label="Recap conversation" aria-live="polite" tabindex="0">
+      <article class="recap-bubble"><span class="eyebrow">RECAP ASSISTANT</span><p>Been away? Choose a time range and, optionally, a member. I’ll pull accessible history and select key excerpts with source links.</p><p>Try “summarize last 2 weeks”, “recap from Arshiya last 7 days”, or “questions”. Requests are independent; filters stay selected.</p><small>Not a general-purpose chatbot. Up to 3,000 messages per request; incomplete coverage is always labeled.</small></article>
+    </div>
+    <form id="recap-form"><label for="recap-prompt" class="visually-hidden">Recap request</label><input id="recap-prompt" maxlength="300" placeholder="Ask for a recap, or use filters above…" autocomplete="off" /><button type="submit" id="recap-send" class="soft-button">Summarize ↵</button></form>
+    <p id="recap-progress" role="status">Enter a request or press Summarize to use the filters.</p>
+  </dialog>
+</body>
+</html>
