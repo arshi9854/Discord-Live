@@ -26,7 +26,24 @@ npm run demo
 
 Open **http://localhost:3000**. Demo mode uses labeled sample messages.
 
-For real Discord messages, configure [.env.example](.env.example) as `.env`, set `DEMO_MODE=false`, stop the demo, and run `npm start`. Never commit tokens or API keys. [Setup instructions →](docs/implementation-guide.md)
+## 🔌 Getting started with Discord
+
+1. Create a bot in the [Discord Developer Portal](https://discord.com/developers/applications), enable **Message Content Intent**, and install it in your test server with **View Channel** and **Read Message History** permissions.
+2. In Discord, enable **User Settings → Advanced → Developer Mode**. Right-click your text channel → **Copy Channel ID**.
+3. Copy [.env.example](.env.example) to a file named `.env` in the project root. Replace these placeholders:
+
+   ```dotenv
+   DEMO_MODE=false
+   DISCORD_BOT_TOKEN=your_bot_token
+   DISCORD_CHANNEL_ID=your_channel_id
+   PORT=3000
+   ```
+
+   Use the **bot token**, not the application/client ID. A **server ID is not needed**—the channel ID identifies the source.
+
+4. Stop demo mode, run `npm start`, and open **http://localhost:3000**. Post in that Discord channel to see it appear.
+
+**Keep `.env` private; never commit your bot token.** Use only a public/test channel. [More setup details →](docs/implementation-guide.md)
 
 ## 🧩 How it works
 
