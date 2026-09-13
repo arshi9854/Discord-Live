@@ -6,3 +6,4 @@ node_modules/
 coverage/
 test-results/
 .railway/
+docs/interview-prep.md

@@ -75,4 +75,4 @@ Deploy this repository on Railway using the included `Dockerfile` and `railway.j
 
 **Deployment and a live OpenRouter call remain unverified.**
 
-[Setup guide](docs/implementation-guide.md) · [Reliability](docs/reliability.md) · [Deployment checklist](docs/deployment-checklist.md) · [Interview walkthrough](docs/interview-prep.md)
+[Setup guide](docs/implementation-guide.md) · [Reliability](docs/reliability.md) · [Deployment checklist](docs/deployment-checklist.md)

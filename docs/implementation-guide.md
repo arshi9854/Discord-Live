@@ -180,4 +180,4 @@ For the interview, trace one note from the Gateway handler to its message row, t
 
 See [the product walkthrough](product-walkthrough.md) and [submission email draft](submission-email.md).
 
-For the assignment review, use [the five-minute technical walkthrough and interview questions](interview-prep.md), then complete [the Railway and real-channel acceptance checklist](deployment-checklist.md). The compact page leads with live messages; bookmarks remain optional. Separate browser/Discord indicators distinguish connection failures, and the last-received timestamp reports message-state delivery to the page, not network latency.
+Before sharing the deployment, complete [the Railway and real-channel acceptance checklist](deployment-checklist.md). The compact page leads with live messages; bookmarks remain optional. Separate browser/Discord indicators distinguish connection failures, and the last-received timestamp reports message-state delivery to the page, not network latency.

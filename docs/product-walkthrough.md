@@ -13,7 +13,7 @@ A remote community is welcoming a new member. People can send a hello in their e
 5. Delete it: the message row disappears from both windows.
 6. Reload one window: a fresh snapshot restores the retained message window. Explain that this is bounded recovery, not durable archival storage.
 
-Keep the focus here, then move to the backend-to-browser code path in [the interview guide](interview-prep.md).
+Keep the focus here, then trace the backend-to-browser code path described in [the setup guide](implementation-guide.md).
 
 ## Optional guestbook extra
 
